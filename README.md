@@ -11,7 +11,7 @@ The following labs in this demo code project are designed for Microchip’s Curi
 ## Related Documentation
 
 - [MPLAB Code Configurator](https://www.microchip.com/en-us/development-tools-tools-and-software/embedded-software-center/mplab-code-configurator)
-- [PIC18-Q43 Family Product Page](https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/8-bit-mcus/pic-mcus/pic18-q43)
+- [PIC18-Q71 Family Product Page](https://www.microchip.com/en-us/products/microcontrollers-and-microprocessors/8-bit-mcus/pic-mcus/pic18-q71)
 
 ## Software Used
 
@@ -19,8 +19,6 @@ The following labs in this demo code project are designed for Microchip’s Curi
 - MPLAB® XC8 2.40.0 or newer compiler [(MPLAB® XC8 2.40)](https://www.microchip.com/en-us/development-tools-tools-and-software/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_MMTCha_MPAE_Examples&utm_content=pic18f46q71-curiosity-hpc-demo-code-github)
 - MPLAB® Melody Library 2.2.37 or newer [(microchip.com/mplab/mplab-code-configurator)](https://www.microchip.com/mplab/mplab-code-configurator)
 - Microchip PIC18F-Q Series Device Support (1.14.237) or newer [(packs.download.microchip.com/)](https://packs.download.microchip.com/)
-
-
 
 ## Hardware Used
 

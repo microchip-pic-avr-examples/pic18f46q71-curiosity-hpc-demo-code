@@ -19,12 +19,12 @@
             }
         ],
         "dfp": {
-            "name": "",
-            "semverRange": ""
+            "name": "PIC18F-Q_DFP",
+            "semverRange": "^1.14.237"
         },
         "configurator": {
-            "name": "",
-            "semverRange": ""
+            "name": "MCC Melody Core",
+            "semverRange": ">=2.2.37"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -36,9 +36,14 @@
                 "versionRange": "*"
             }
         },
-        "author": "Jason Layton",
-        "peripherals": [],
-        "keywords": [],
+        "author": "Jamus Griego",
+        "peripherals": ["ADCC","UART","WWDT","TMR1","PWM"],
+        "keywords": ["Demo Code",
+        "Getting Started",
+        "Q71",
+        "PIC18-Q71",
+        "Curiosity Board",
+        "Melody"],
         "additionalData": {
             "longDescription": {
                 "metaDataVersion": "1.0.0",
