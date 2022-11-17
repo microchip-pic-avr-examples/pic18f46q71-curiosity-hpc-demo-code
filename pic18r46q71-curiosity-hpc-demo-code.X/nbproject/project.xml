@@ -17,7 +17,11 @@
             </sourceRootList>
             <confList>
                 <confElem>
-                    <name>default</name>
+                    <name>PRO</name>
+                    <type>2</type>
+                </confElem>
+                <confElem>
+                    <name>FREE</name>
                     <type>2</type>
                 </confElem>
             </confList>

@@ -49,7 +49,6 @@
 #include "../pwm/pwm3_16bit.h"
 #include "../timer/tmr0.h"
 #include "../timer/tmr1.h"
-#include "../timer/tmr2.h"
 #include "../uart/uart1.h"
 #include "../system/watchdog.h"
 #include "../system/interrupt.h"

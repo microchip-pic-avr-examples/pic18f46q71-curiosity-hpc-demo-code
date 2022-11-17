@@ -71,11 +71,9 @@ void PWM(void) {
         printf("ADC Result: %d\n\r", adcResult);
         PWM3_16BIT_SetSlice1Output1DutyCycleRegister(adcResult);
         PWM3_16BIT_LoadBufferRegisters();
-        CLCnCONbits.EN = 0x1;  //Enable CLC
     }
 
     if (switchEvent) {
-        CLCnCONbits.EN  = 0x0;  //Disable CLC
         LEDs_SetLow();
         PWM_Output_D5_Disable();
 

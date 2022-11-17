@@ -49,7 +49,6 @@ void SYSTEM_Initialize(void)
     PWM3_16BIT_Initialize();
     Timer0_Initialize();
     Timer1_Initialize();
-    Timer2_Initialize();
     UART1_Initialize();
     WWDT_Initialize();
     INTERRUPT_Initialize();
