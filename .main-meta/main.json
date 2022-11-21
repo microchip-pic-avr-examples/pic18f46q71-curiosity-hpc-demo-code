@@ -38,11 +38,9 @@
         },
         "author": "Jamus Griego",
         "peripherals": ["ADCC","UART","WWDT","TMR1","PWM"],
-        "keywords": ["Demo Code",
+        "keywords": [
         "Getting Started",
-        "Q71",
-        "PIC18-Q71",
-        "Curiosity Board",
+        "Curiosity",
         "Melody"],
         "additionalData": {
             "longDescription": {
