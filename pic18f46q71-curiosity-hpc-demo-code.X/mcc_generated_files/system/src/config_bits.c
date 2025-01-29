@@ -1,17 +1,19 @@
 /**
- * CONFIGURATION BITS Generated Driver Source File
+ * Configuration Bits Generated Driver Source File
  * 
  * @file config_bits.c
  * 
  * @ingroup config_bitsdriver
  * 
- * @brief This is the generated Device Configuration Bits file.
+ * @brief This file contains the API implementation for the Device Configuration Bits driver.
  *
- * @version Driver Version 1.0.0
+ * @version Driver Version 1.0.1
+ *
+ * @version Package Version 1.0.4
 */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2025] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -39,7 +41,7 @@
 
 //CONFIG2
 #pragma config CLKOUTEN = OFF     // Clock out Enable bit->CLKOUT function is disabled
-#pragma config PR1WAY = ON     // PRLOCKED One-Way Set Enable bit->PRLOCKED bit can be cleared and set only once
+#pragma config PR1WAY = OFF     // PRLOCKED One-Way Set Enable bit->PRLOCKED bit can be set and cleared repeatedly
 #pragma config BBEN = OFF     // Boot Block enable bit->Boot block disabled
 #pragma config CSWEN = ON     // Clock Switch Enable bit->Writing to NOSC and NDIV is allowed
 #pragma config FCMEN = ON     // Fail-Safe Clock Monitor Enable bit->Fail-Safe Clock Monitor enabled
@@ -49,7 +51,7 @@
 //CONFIG3
 #pragma config MCLRE = EXTMCLR     // MCLR Enable bit->If LVP = 0, MCLR pin is MCLR; If LVP = 1, RE3 pin function is MCLR 
 #pragma config PWRTS = PWRT_OFF     // Power-up timer selection bits->PWRT is disabled
-#pragma config MVECEN = ON     // Multi-vector enable bit->Multi-vector enabled, Vector table used for interrupts
+#pragma config MVECEN = OFF     // Multi-vector enable bit->Interrupt contoller does not use vector table to prioritze interrupts
 #pragma config IVT1WAY = ON     // IVTLOCK bit One-way set enable bit->IVTLOCKED bit can be cleared and set only once
 #pragma config LPBOREN = OFF     // Low Power BOR Enable bit->Low-Power BOR disabled
 #pragma config BOREN = SBORDIS     // Brown-out Reset Enable bits->Brown-out Reset enabled , SBOREN bit is ignored
@@ -60,7 +62,6 @@
 #pragma config PPS1WAY = OFF     // PPSLOCK bit One-Way Set Enable bit->PPSLOCKED bit can be set and cleared repeatedly (subject to the unlock sequence)
 #pragma config STVREN = ON     // Stack Full/Underflow Reset Enable bit->Stack full/underflow will cause Reset
 #pragma config LVP = ON     // Low Voltage Programming Enable bit->Low voltage programming enabled. MCLR/VPP pin function is MCLR. MCLRE configuration bit is ignored
-#pragma config DEBUG = OFF     // Background Debugger->Background Debugger disabled
 #pragma config XINST = OFF     // Extended Instruction Set Enable bit->Extended Instruction Set and Indexed Addressing Mode disabled
 
 //CONFIG5
@@ -69,7 +70,7 @@
 
 //CONFIG6
 #pragma config WDTCWS = WDTCWS_7     // WDT Window Select bits->window always open (100%); software control; keyed access not required
-#pragma config WDTCCS = MFINTOSC     // WDT input clock selector->WDT reference clock is the 32kHz MFINTOSC output
+#pragma config WDTCCS = SC     // WDT input clock selector->Software Control
 
 //CONFIG7
 #pragma config BBSIZE = BBSIZE_16384     // Boot Block Size Selection bits->Boot Block size is 16384 words

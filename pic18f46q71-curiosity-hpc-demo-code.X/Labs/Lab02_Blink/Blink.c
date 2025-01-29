@@ -36,38 +36,25 @@
     TERMS.
 */
 
-/**
-  Section: Included Files
- */
-
 #include "../../mcc_generated_files/system/system.h"
 #include "../../labs.h"
 
-/**
-  Section: Macro Declaration
- */
-#define FLAG_COUNTER_MAX 3  // Maximum flag count to create 1.5 seconds delay
+#define FLAG_COUNTER_MAX 3                                                      // Maximum flag count to create 1.5 seconds delay
 
-/**
-  Section: Variable Declaration
- */
 static uint8_t flagCounter = 0;
 
-/*
-                             Application    
- */
 void Blink(void) {
     if (labState  == NOT_RUNNING) {
         LEDs_SetLow();
-        Timer1_Start();
+        TMR1_Start();
 
         labState = RUNNING;
     }
 
     if (labState == RUNNING) {
-        while(!Timer1_HasOverflowOccured());   
-        TMR1IF = 0;  
-        Timer1_Reload();    
+        while(!TMR1_HasOverflowOccured());   
+        TMR1_OverflowStatusClear();  
+        TMR1_Reload();    
         flagCounter++;
 
         if(flagCounter == FLAG_COUNTER_MAX){       
@@ -77,7 +64,7 @@ void Blink(void) {
     }
 
     if (switchEvent) {
-        Timer1_Stop();
+        TMR1_Stop();
         labState = NOT_RUNNING;
     }
 }

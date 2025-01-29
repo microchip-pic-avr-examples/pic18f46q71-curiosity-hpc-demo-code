@@ -1,23 +1,16 @@
-/** 
-  @Company
-    Microchip Technology Inc.
- 
-  @File Name
-    TMR_interface.h
- 
-  @Summary
-    This is the generated header file for Timer module interfaces.
- 
-  @Description
-    This header file provides interfaces to Timer driver APIs.
-    Generation Information :
-        Driver Version    :  1.0.0
-    The generated drivers are tested against the following:
-        MPLAB             :  MPLAB X v5.40
+/**
+ * UART Generated Driver Interface Header File
+ * 
+ * @file uart_types.h
+ * 
+ * @defgroup uart_types UART_TYPES
+ * 
+ * @brief This file contains the enumeration of different Universal Asynchronous Receiver and Transmitter (UART) baud rates.
+ *
+ * @version UART Driver Version 3.0.2
 */
-
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2025] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -37,33 +30,52 @@
     THIS SOFTWARE.
 */
 
-#ifndef TMR_INTERFACE_H
-#define TMR_INTERFACE_H
+#ifndef UART_TYPES_H
+#define	UART_TYPES_H
 
 /**
- * @brief This file contains API prototypes and other datatypes for Timer module.
- * @defgroup timer_interface Timer Interface
- * @{
- */
+  Section: Included Files
+*/
+#include <stdbool.h>
+#include <stdint.h>
 
-#include<stddef.h>
-        
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
+   
 /**
- @ingroup timer_interface
- @typedef struct TMR_INTERFACE
- @brief This structure contains the interfaces to Timer module
- */
- 
-struct TMR_INTERFACE
-{
-    void (*Initialize)(void);
-    void (*Start)(void);
-    void (*Stop)(void);
-    void (*PeriodCountSet)(size_t count);
-    void (*TimeoutCallbackRegister)(void (* CallbackHandler)(void));
-    void (*Tasks)(void);
+  Section: Data Type Definitions
+*/ 
+      
+/**
+@ingroup uartdriver
+@enum UART_STANDARD_BAUDS
+@brief This Enum can be used to set the UART standard
+baud-rates using \ref UARTx_BRGSet function e.g. \ref UART1_BRGSet.
+*/
+enum UART_STANDARD_BAUDS{
+UART_110 = 0,
+UART_300 = 1,
+UART_600 = 2,
+UART_1200 = 3,
+UART_2400 = 4,
+UART_4800 = 5,
+UART_9600 = 6,
+UART_14400 = 7,
+UART_19200 = 8,
+UART_38400 = 9,
+UART_57600 = 10,
+UART_115200 = 11,
+UART_230400 = 12,
+UART_460800 = 13,
+UART_921600 = 14,
 };
-/**
- * @}
- */
-#endif //TMR_INTERFACE_H
+
+
+#ifdef	__cplusplus
+}
+#endif
+
+#endif	/* UART_TYPES_H */
+

@@ -36,27 +36,14 @@
     TERMS.
  */
 
-/**
-  Section: Included Files
- */
-
 #include "../../mcc_generated_files/system/system.h"
 #include "../../labs.h"
 
-/**
-  Section: Local Function Prototypes
- */
 void PWM_Output_D5_Enable(void);
 void PWM_Output_D5_Disable(void);
 
-/**
-  Section: Local Variable Declarations
- */
 static uint16_t adcResult;
 
-/*
-                             Application    
- */
 void PWM(void) {
     if (labState == NOT_RUNNING) {
         LEDs_SetLow();
@@ -66,46 +53,24 @@ void PWM(void) {
     }
 
     if (labState == RUNNING) {
-        adcResult = ADC_GetSingleConversion(POT_CHANNEL) >> 4;
-        //Printing ADC result on Serial port
-        printf("ADC Result: %d\n\r", adcResult);
+        adcResult = (uint16_t)(ADC_ChannelSelectAndConvert(POT_CHANNEL));
+        printf("ADC Result: %u\n\r", adcResult);                                // Printing ADC result on Serial port
         PWM3_16BIT_SetSlice1Output1DutyCycleRegister(adcResult);
         PWM3_16BIT_LoadBufferRegisters();
     }
 
     if (switchEvent) {
-        LEDs_SetLow();
         PWM_Output_D5_Disable();
-
         labState = NOT_RUNNING;
     }
 }
 
-void PWM_Output_D5_Enable(void) {
-    PPSLOCK = 0x55;
-    PPSLOCK = 0xAA;
-    PPSLOCKbits.PPSLOCKED = 0x00; // unlock PPS
-
-    // Set D5 as the output of PWM3S1P1 through CLC1
-    RA7PPS = 0x01;
-
-    PPSLOCK = 0x55;
-    PPSLOCK = 0xAA;
-    PPSLOCKbits.PPSLOCKED = 0x01; // lock PPS
+void PWM_Output_D5_Enable(void) {    
+    RA7PPS = 0x5;                  // Set D5 as the output of CLC5
 }
 
-void PWM_Output_D5_Disable(void) {
-    PPSLOCK = 0x55;
-    PPSLOCK = 0xAA;
-    PPSLOCKbits.PPSLOCKED = 0x00; // unlock PPS
-
-    // Set D5 as GPIO pin
-    RA7PPS = 0x00;
-
-    PPSLOCK = 0x55;
-    PPSLOCK = 0xAA;
-    PPSLOCKbits.PPSLOCKED = 0x01; // lock PPS
-    
+void PWM_Output_D5_Disable(void) {       
+    RA7PPS = 0x00;                  // Set D5 as GPIO pin
 }
 /**
  End of File

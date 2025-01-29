@@ -1,26 +1,20 @@
 /**
-  @Generated CCL Header File
-
-  @Company:
-    Microchip Technology Inc.
-
-  @File Name:
-    clock.h
-
-  @Summary:
-    This is the clock.h file generated using CCL
-
-  @Description:
-    This header file provides implementations for driver APIs for all modules selected in the GUI.
-    Generation Information :
-        Driver Version    :  2.00
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 v2.20
-        MPLAB             :  MPLAB X 5.40
+ * CLOCK Generated Driver Header File 
+ * 
+ * @file clock.h
+ * 
+ * @defgroup clockdriver Clock Driver
+ * 
+ * @brief This file contains the API prototypes and other data types for the Clock driver.
+ *
+ * @version Driver Version 2.0.4
+ *
+ * @version Package Version 4.3.7
+ *
 */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2025] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -44,9 +38,21 @@
 #define	CLOCK_H
 
 #ifndef _XTAL_FREQ
-#define _XTAL_FREQ 500000
+/**
+    @ingroup clock control 
+    @def system frequency
+    @misradeviation{@required, 21.1} Defining the system frequency using the _XTAL_FREQ macro is required by the XC8 compiler for the built-in delay functions.
+*/
+/* cppcheck-suppress misra-c2012-21.1 */
+#define _XTAL_FREQ 500000U
 #endif
 
+/**
+ * @ingroup clockdriver
+ * @brief Initializes all the Internal Oscillator sources and the clock switch configurations. 
+ * @param None.
+ * @return None.
+ */
 void CLOCK_Initialize(void);
 
 #endif	/* CLOCK_H */

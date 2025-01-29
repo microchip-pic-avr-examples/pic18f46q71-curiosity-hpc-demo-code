@@ -47,7 +47,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 /**
   Section: Macro Declarations
  */
-    #define _XTAL_FREQ          500000
     #define PRESSED             1
     #define NOT_PRESSED         0
     #define RUNNING             1
@@ -124,7 +123,6 @@ void Blink(void);
   @Param
     none
 */
-
 void Rotate(void);
 
 /**
@@ -144,7 +142,7 @@ void Rotate(void);
   @Param
     none
 */
-void ADC_LAB(void);
+void ADC(void);
 
 /**
   @Summary
@@ -200,7 +198,7 @@ void PWM(void);
   @Param
     none
 */
-void Timers(void);
+void Timer1(void);
 
 /**
   @Summary
@@ -218,7 +216,7 @@ void Timers(void);
   @Param
     none
 */
-void Interrupts_Lab(void);
+void Interrupt(void);
 
 /**
   @Summary

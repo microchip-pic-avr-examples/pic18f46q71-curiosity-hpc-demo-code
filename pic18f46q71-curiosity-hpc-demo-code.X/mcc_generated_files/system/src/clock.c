@@ -1,26 +1,19 @@
 /**
-  @Generated CLOCK CONTROL Source File
-
-  @Company:
-    Microchip Technology Inc.
-
-  @File Name:
-    clock.c
-
-  @Summary:
-    This is the clock.c file generated using CCL
-
-  @Description:
-    This header file provides implementations for driver APIs for all modules selected in the GUI.
-    Generation Information :
-        Driver Version    :  2.00
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 v2.20
-        MPLAB             :  MPLAB X 5.40
+ * CLOCK Generated Driver Source File
+ * 
+ * @file clock.c
+ * 
+ * @ingroup clockdriver 
+ * 
+ * @brief This file contains the API prototypes for the Clock driver.
+ *
+ * @version Driver Version 2.0.4
+ *
+ * @version Package Version 4.3.7
 */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2025] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -46,22 +39,28 @@
 void CLOCK_Initialize(void)
 {
     // Set the CLOCK CONTROL module to the options selected in the user interface.
-    // NDIV 8; NOSC HFINTOSC; 
-    OSCCON1 = 0x63;
-    // 
-    OSCCON2 = 0x70;
-    // SOSCPWR Low power; CSWHOLD may proceed; 
-    OSCCON3 = 0x0;
-    // EXTOEN disabled; HFOEN disabled; MFOEN disabled; LFOEN disabled; SOSCEN disabled; ADOEN disabled; 
-    OSCEN = 0x0;
-    // HFFRQ 4_MHz; 
-    OSCFRQ = 0x2;
-    // 
-    OSCSTAT = 0x0;
-    // TUN undefined; 
-    OSCTUNE = 0x0;
-    // ACTEN disabled; ACTUD enabled; 
-    ACTCON = 0x0;
+    OSCCON1 = (3 << _OSCCON1_NDIV_POSN)   // NDIV 8
+        | (6 << _OSCCON1_NOSC_POSN);  // NOSC HFINTOSC
+    OSCCON3 = (0 << _OSCCON3_SOSCPWR_POSN)   // SOSCPWR Low power
+        | (0 << _OSCCON3_CSWHOLD_POSN);  // CSWHOLD may proceed
+    OSCEN = (0 << _OSCEN_EXTOEN_POSN)   // EXTOEN disabled
+        | (0 << _OSCEN_HFOEN_POSN)   // HFOEN disabled
+        | (0 << _OSCEN_MFOEN_POSN)   // MFOEN disabled
+        | (0 << _OSCEN_LFOEN_POSN)   // LFOEN disabled
+        | (0 << _OSCEN_SOSCEN_POSN)   // SOSCEN disabled
+        | (0 << _OSCEN_ADOEN_POSN)   // ADOEN disabled
+        | (0 << _OSCEN_PLLEN_POSN);  // PLLEN disabled
+    OSCFRQ = (2 << _OSCFRQ_HFFRQ_POSN);  // HFFRQ 4_MHz
+    OSCTUNE = (0 << _OSCTUNE_TUN_POSN);  // TUN 0x0
+    ACTCON = (0 << _ACTCON_ACTEN_POSN)   // ACTEN disabled
+        | (0 << _ACTCON_ACTUD_POSN);  // ACTUD enabled
+    FSCMCON = (0 << _FSCMCON_FSCMFEV_POSN)   // FSCMFEV detected
+        | (0 << _FSCMCON_FSCMFFI_POSN)   // FSCMFFI enabled
+        | (0 << _FSCMCON_FSCMPEV_POSN)   // FSCMPEV detected
+        | (0 << _FSCMCON_FSCMPFI_POSN)   // FSCMPFI enabled
+        | (0 << _FSCMCON_FSCMSEV_POSN)   // FSCMSEV detected
+        | (0 << _FSCMCON_FSCMSFI_POSN);  // FSCMSFI enabled
+
 }
 /**
  End of File

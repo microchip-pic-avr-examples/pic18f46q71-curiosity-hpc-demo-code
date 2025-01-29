@@ -7,43 +7,37 @@
  * 
  * @brief This is the generated driver implementation file for the MAIN driver.
  *
- * @version MAIN Driver Version 1.0.0
+ * @version MAIN Driver Version 1.0.2
+ *
+ * @version Package Version: 3.1.2
 */
 
-/*
-� [2022] Microchip Technology Inc. and its subsidiaries.
-
-    Subject to your compliance with these terms, you may use Microchip 
-    software and any derivatives exclusively with Microchip products. 
-    You are responsible for complying with 3rd party license terms  
-    applicable to your use of 3rd party software (including open source  
-    software) that may accompany Microchip software. SOFTWARE IS ?AS IS.? 
-    NO WARRANTIES, WHETHER EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS 
-    SOFTWARE, INCLUDING ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT,  
-    MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT 
-    WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY 
-    KIND WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF 
-    MICROCHIP HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE 
-    FORESEEABLE. TO THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP?S 
-    TOTAL LIABILITY ON ALL CLAIMS RELATED TO THE SOFTWARE WILL NOT 
-    EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
-    THIS SOFTWARE.
-*/
 #include "mcc_generated_files/system/system.h"
 #include "labs.h"
+
 void checkButtonS1(void);
 void nextLab(void);
-/*
-    Main application
-*/
 
-int main(void)
-{
-    SYSTEM_Initialize();
-    // Disable the pre-enabled interrupts of the MCC    
-    INTERRUPT_TMR0InterruptDisable();
+void main(void) {
+    SYSTEM_Initialize();       
+    INTERRUPT_TMR0InterruptDisable();                                           // Disable the pre-enabled interrupts of the MCC
 
+    // If using interrupts in PIC18 High/Low Priority Mode you need to enable the Global High and Low Interrupts
+    // If using interrupts in PIC Mid-Range Compatibility Mode you need to enable the Global Interrupts
+    // Use the following macros to:
+
+    // Enable the Global Interrupts
+    //INTERRUPT_GlobalInterruptEnable();
+
+    // Disable the Global Interrupts
+    //INTERRUPT_GlobalInterruptDisable();
+
+    // Enable the Peripheral Interrupts
+    //INTERRUPT_PeripheralInterruptEnable();
+
+    // Disable the Peripheral Interrupts
+    //INTERRUPT_PeripheralInterruptDisable();    
+   
     while (1) {
         checkButtonS1();
         switch (labNumber) {
@@ -53,15 +47,15 @@ int main(void)
                 break;
             case 3: Rotate();
                 break;
-            case 4: ADC_LAB();
+            case 4: ADC();
                 break;
             case 5: VSR();
                 break;
             case 6: PWM();
                 break;
-            case 7: Timers();
+            case 7: Timer1();
                 break;
-            case 8: Interrupts_Lab();
+            case 8: Interrupt();
                 break;
             case 9: SleepWakeUp();
                 break;
@@ -75,18 +69,10 @@ int main(void)
     }
 }
 
-   
 void checkButtonS1(void) {
-    if (btnState == NOT_PRESSED) {
-        if (SWITCH_S1_PORT == LOW) {
-            __delay_ms(100);
-            if(SWITCH_S1_PORT == LOW){
-            btnState = PRESSED;
-            }
-        }
-    } else if (SWITCH_S1_PORT == HIGH) {
-        btnState = NOT_PRESSED;
+    if( CLC1IF ) {
         switchEvent = 1;
+        CLC1IF = 0;        
     }
 }
 
@@ -97,4 +83,7 @@ void nextLab(void) {
     if (labNumber > 10) {
         labNumber = 1;
     }
-} 
+}
+/**
+ End of File
+ */

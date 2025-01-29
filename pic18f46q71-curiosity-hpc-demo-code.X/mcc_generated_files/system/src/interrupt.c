@@ -1,28 +1,17 @@
 /**
-  Generated Interrupt Manager Source File
-
-  @Company:
-    Microchip Technology Inc.
-
-  @File Name:
-    interrupt.c
-
-  @Summary:
-    This is the Interrupt Manager file generated
-
-  @Description:
-    This header file provides implementations for global interrupt handling.
-    For individual peripheral handlers please see the peripheral driver for
-    all modules selected in the GUI.
-    Generation Information :
-        Driver Version    :  2.12
-    The generated drivers are tested against the following:
-        Compiler          :  XC8 v2.20 or later
-        MPLAB 	          :  MPLABX v5.45
+ * Interrupt Manager Generated Driver File.
+ *
+ * @file interrupt.c
+ * 
+ * @ingroup interrupt 
+ * 
+ * @brief This file contains the API prototypes for the Interrupt Manager driver.
+ * 
+ * @version Interrupt Manager Driver Version 2.0.4
 */
 
 /*
-© [2022] Microchip Technology Inc. and its subsidiaries.
+© [2025] Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip 
     software and any derivatives exclusively with Microchip products. 
@@ -44,7 +33,7 @@
 
 #include "../../system/interrupt.h"
 #include "../../system/system.h"
-#include <stdbool.h>
+#include "../pins.h"
 
 void (*INT0_InterruptHandler)(void);
 void (*INT1_InterruptHandler)(void);
@@ -52,25 +41,8 @@ void (*INT2_InterruptHandler)(void);
 
 void  INTERRUPT_Initialize (void)
 {
-    INTCON0bits.IPEN = 1;
-
-    bool state = (unsigned char)GIE;
-    GIE = 0;
-    IVTLOCK = 0x55;
-    IVTLOCK = 0xAA;
-    IVTLOCKbits.IVTLOCKED = 0x00; // unlock IVT
-
-    IVTBASEU = 0;
-    IVTBASEH = 0;
-    IVTBASEL = 8;
-
-    IVTLOCK = 0x55;
-    IVTLOCK = 0xAA;
-    IVTLOCKbits.IVTLOCKED = 0x01; // lock IVT
-
-    GIE = state;
-    // Assign peripheral interrupt priority vectors
-    IPR3bits.TMR0IP = 1;
+    // Disable Interrupt Priority Vectors (16CXXX Compatibility Mode)
+    INTCON0bits.IPEN = 0;
 
     // Clear the interrupt flag
     // Set the external interrupt edge detect
@@ -98,16 +70,35 @@ void  INTERRUPT_Initialize (void)
 
 }
 
-void __interrupt(irq(default),base(8)) Default_ISR()
+/**
+ * @ingroup interrupt
+ * @brief Executes whenever a high-priority interrupt is triggered. This routine checks the source of the interrupt and calls the relevant interrupt function.
+ * @pre INTERRUPT_Initialize() is already called.
+ * @param None.
+ * @return None.
+ */
+void __interrupt() INTERRUPT_InterruptManager (void)
 {
+    // interrupt handler
+    if(PIE3bits.TMR0IE == 1 && PIR3bits.TMR0IF == 1)
+    {
+        TMR0_ISR();
+    }
+    else if(PIE1bits.ADIE == 1 && PIR1bits.ADIF == 1)
+    {
+        ADC_ISR();
+    }
+    else if(PIE1bits.ADCH1IE == 1 && PIR1bits.ADCH1IF == 1)
+    {
+        ADC_Context1ThresholdISR();
+    }
+    else
+    {
+        //Unhandled Interrupt
+    }
 }
 
-void __interrupt(irq(IOC), base(8)) IOC_ISR()
-{
-    PIN_MANAGER_IOC();
-}
-
-void __interrupt(irq(INT0),base(8)) INT0_ISR()
+void INT0_ISR(void)
 {
     EXT_INT0_InterruptFlagClear();
 
@@ -133,7 +124,7 @@ void INT0_DefaultInterruptHandler(void){
     // add your INT0 interrupt custom code
     // or set custom function using INT0_SetInterruptHandler()
 }
-void __interrupt(irq(INT1),base(8)) INT1_ISR()
+void INT1_ISR(void)
 {
     EXT_INT1_InterruptFlagClear();
 
@@ -159,7 +150,7 @@ void INT1_DefaultInterruptHandler(void){
     // add your INT1 interrupt custom code
     // or set custom function using INT1_SetInterruptHandler()
 }
-void __interrupt(irq(INT2),base(8)) INT2_ISR()
+void INT2_ISR(void)
 {
     EXT_INT2_InterruptFlagClear();
 

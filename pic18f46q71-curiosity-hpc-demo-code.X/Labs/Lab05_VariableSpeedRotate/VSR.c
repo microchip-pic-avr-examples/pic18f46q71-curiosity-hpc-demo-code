@@ -36,52 +36,35 @@
     TERMS.
  */
 
-/**
-  Section: Included Files
- */
 
 #include "../../mcc_generated_files/system/system.h"
 #include "../../labs.h"
 
-/**
-  Section: Local Variable Declarations
- */
 static uint8_t delay;
 static uint8_t rotateReg;
 
-/*
-                             Application    
- */
 void VSR(void) {
 
     if (labState == NOT_RUNNING) {
-        LEDs_SetLow();
-
-        //Initialize temporary register to begin at 1
-        rotateReg = 1;
-
+        LEDs_SetLow();        
+        rotateReg = 1;                                                          // Initialize temporary register to begin at 1
         labState = RUNNING;
     }
 
-    if (labState == RUNNING) {
-        // Use the top 8 MSbs of the ADC result as delay
-        delay = ADC_GetSingleConversion(POT_CHANNEL) >> 8;
-        //Printing ADC result on Serial port
-        printf("ADC Result: %d\n\r", ADRES >> 4);
+    if (labState == RUNNING) {        
+        delay = (uint8_t)(ADC_ChannelSelectAndConvert(POT_CHANNEL) >> 8);                  // Use the top 8 MSbs of the ADC result as delay
+        printf("ADC Result: %u\n\r", ADRES >> 4);                               // Printing ADC result on Serial port
         __delay_ms(2);
-
-        // Decrement the 8 MSbs of the ADC and delay each for 2ms
-        while (delay-- != 0) {
+    
+        while (delay-- != 0) {                                                  // Decrement the 8 MSbs of the ADC and delay each for 2ms
             __delay_ms(2);
         }
-
-        //Determine which LED will light up
-        LEDs = (rotateReg << 4);
+    
+        LEDs = (uint8_t)(rotateReg << 4);                                                // Determine which LED will light up
 
         rotateReg <<= 1;
-
-        //Return to initial position of LED
-        if (rotateReg == LAST) {
+       
+        if (rotateReg == LAST) {                                                // Return to initial position of LED
             rotateReg = 1;
         }
     }

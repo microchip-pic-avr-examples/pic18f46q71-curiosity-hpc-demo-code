@@ -1,17 +1,17 @@
 /**
-  Analog-to-Digital Lab Source File
+  Interrupt Lab Source File
 
   Company:
     Microchip Technology Inc.
 
   File Name:
-    ADC.c
+    Interrupt.c
 
   Summary:
-    This is the source file for the ADC lab
+    This is the source file for the Interrupt lab
 
   Description:
-    This source file contains the code on how the ADC lab works.
+    This source file contains the code on how the Interrupt lab works.
  */
 
 /*
@@ -34,45 +34,51 @@
 
     MICROCHIP PROVIDES THIS SOFTWARE CONDITIONALLY UPON YOUR ACCEPTANCE OF THESE
     TERMS.
- */
-
-/**
-  Section: Included Files
- */
+*/
 
 #include "../../mcc_generated_files/system/system.h"
 #include "../../labs.h"
 
-/**
-  Section: Local Variable Declaration
- */
-static uint8_t adcResult; // Used to store the result of the ADC
+void LAB_ISR(void);
 
-/*
-                             Application    
- */
-void ADC_LAB(void) {
+static uint8_t rotateReg;
+
+void Interrupt(void) {
 
     if (labState == NOT_RUNNING) {
         LEDs_SetLow();
-
+        LED_D2_SetHigh();
+        
+        rotateReg = 1;
+        
+        TMR0_PeriodMatchCallbackRegister(LAB_ISR);
+       
+        INTERRUPT_GlobalInterruptEnable();
+        INTERRUPT_TMR0InterruptEnable();
+        
         labState = RUNNING;
     }
 
-    if (labState == RUNNING) {
-        //Get the top 4 MSBs and display it on the LEDs
-        adcResult = ADC_GetSingleConversion(POT_CHANNEL) >> 12;
-
-        //Printing ADC result on Serial port
-        printf("ADC Result: %d\n\r", ADRES >> 4);
-
-        //Determine which LEDs will light up
-        LEDs = (adcResult << 4);
+    if(labState == RUNNING){                                                    // Do nothing. Just wait for an interrupt event 
+         
     }
-
+    
     if (switchEvent) {
+        INTERRUPT_TMR0InterruptDisable();
+        INTERRUPT_GlobalInterruptDisable();
+
         labState = NOT_RUNNING;
     }
+}
+
+void LAB_ISR(void) {                                                            // If the last LED has been lit, restart the pattern          
+    if (rotateReg == 1) {
+        rotateReg = LAST;
+    }
+
+    rotateReg >>= 1;
+       
+    LEDs = (uint8_t)(rotateReg << 4);                                                    // Check which LED should be lit
 }
 /**
  End of File
