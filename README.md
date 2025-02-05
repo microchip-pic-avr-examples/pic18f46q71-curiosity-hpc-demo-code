@@ -77,7 +77,7 @@ The following labs in this demo code project are designed for Microchip™s Curi
 
   ###### Left Shift Binary Operation
 
-  <br><img src="images/Lab3-left-shift-binary-operation.png">
+  <br><img src="images/Lab3-left-shift-binary-operation.PNG">
 
   Similarly, use the Binary Right Shift Operator (>>) to push a '`1`' into the Most Significant Bit (MSb) of the register and have the rest of the bits shift to the right. First set up the Carry bit with the value to be pushed into the register before executing the shift, as seen in the figure below.
 
