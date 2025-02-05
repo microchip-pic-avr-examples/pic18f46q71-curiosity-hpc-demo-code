@@ -8,8 +8,7 @@
 The following labs in this demo code project are designed for Microchip™s Curiosity High Pin Count (HPC) Development board. This development board supports Microchip's 28 and 40-pin 8-bit PIC® microcontrollers (MCUs). This MPLAB X project contains several lab exercises that demonstrate a large number of basic capabilities of PIC devices and can also be used to test the condition of the board. Each lab contains a brief description to help you become acquainted with the different peripherals and features of PIC MCUs. These labs also make use of the MPLAB Code Configurator (MCC), an easy-to-use plugin tool for MPLAB X IDE. MCC can be used to set up the on-chip peripherals and generate drivers which can be used in the application code. All labs are written in the C language, and are compatible with the latest XC8 compilers.
 
 ##### Curiosity High Pin Count (HPC) Development Board:
-
-<br><img src="images/HPC-board.png">
+<br><img src="images/HPC-board.PNG">
 
 ## Software Used
   - [MPLAB® X IDE 6.20 or newer](http://www.microchip.com/mplab/mplab-x-ide)
@@ -76,7 +75,6 @@ The following labs in this demo code project are designed for Microchip™s Curi
   For example, for a certain register rotateReg, use the Binary Left Shift Operator (<<) to push a '`1`' into the Least Significant Bit (LSb) of the register and have the rest of the bits shift to the left. First set up the Carry bit with the value to be pushed into the register before executing the shift, as seen in the figure below. 
 
   ###### Left Shift Binary Operation
-
   <br><img src="images/Lab3-left-shift-binary-operation.PNG">
 
   Similarly, use the Binary Right Shift Operator (>>) to push a '`1`' into the Most Significant Bit (MSb) of the register and have the rest of the bits shift to the right. First set up the Carry bit with the value to be pushed into the register before executing the shift, as seen in the figure below.
