@@ -9,7 +9,7 @@ The following labs in this demo code project are designed for Microchip™s Curi
 
 ##### Curiosity High Pin Count (HPC) Development Board:
 
-![Curiosity High Pin Count (HPC) Development Board](images/HPC-board.png)
+<br><img src="images/HPC-board.png">
 
 ## Software Used
   - [MPLAB® X IDE 6.20 or newer](http://www.microchip.com/mplab/mplab-x-ide)
@@ -77,13 +77,13 @@ The following labs in this demo code project are designed for Microchip™s Curi
 
   ###### Left Shift Binary Operation
 
-  ![Lab3-left-shift-binary-operation](images/Lab3-left-shift-binary-operation.png)
+  <br><img src="images/Lab3-left-shift-binary-operation.png">
 
   Similarly, use the Binary Right Shift Operator (>>) to push a '`1`' into the Most Significant Bit (MSb) of the register and have the rest of the bits shift to the right. First set up the Carry bit with the value to be pushed into the register before executing the shift, as seen in the figure below.
 
   ###### Right Shift Binary Operation
 
-  ![Lab3-right-shift-binary-operation](images/Lab3-right-shift-binary-operation.png)
+  <br><img src="images/Lab3-right-shift-binary-operation.png">
 
 
   ### <u>Lab 4: Analog-to-Digital Conversion (ADC)</u>
@@ -111,7 +111,7 @@ The following labs in this demo code project are designed for Microchip™s Curi
 
   ###### Program Flow
 
-  ![Lab 5 Program Flow](images/Lab5-program-flow.png)
+  <br><img src="images/Lab5-program-flow.png">
 
   ### <u>Lab 6: Pulse-Width Modulation (PWM)</u>
   #### Introduction
@@ -178,7 +178,7 @@ The following labs in this demo code project are designed for Microchip™s Curi
   
   ###### Program Flow
 
-  ![Lab 5 Program Flow](images/Lab10-program-flow.png)
+  <br><img src="images/Lab10-program-flow.png">
 
   ## Summary
  
