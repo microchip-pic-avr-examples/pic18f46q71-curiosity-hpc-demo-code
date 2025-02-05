@@ -11,10 +11,10 @@ The following labs in this demo code project are designed for Microchip™s Curi
 ![Curiosity High Pin Count (HPC) Development Board](images/HPC-board.PNG)
 
 ## Software Used
-  - [MPLAB® X IDE 6.20](http://www.microchip.com/mplab/mplab-x-ide)
+  - [MPLAB® X IDE 6.20 or newer](http://www.microchip.com/mplab/mplab-x-ide)
   - [MPLAB® XC8 3.00 compiler or newer](http://www.microchip.com/mplab/compilers)
-  - [MPLAB® Code Configurator (MCC) 5.7.1](https://www.microchip.com/mplab/mplab-code-configurator)
-  - [Microchip PIC18F-Q Series Device Support 1.26.442](https://packs.download.microchip.com/)
+  - [MPLAB® Code Configurator (MCC) 5.7.1 or newer](https://www.microchip.com/mplab/mplab-code-configurator)
+  - [Microchip PIC18F-Q Series Device Support 1.26.442 or newer](https://packs.download.microchip.com/)
 
   ## Hardware Used
   - [PIC18F46Q71 Microcontroller](https://www.microchip.com/wwwproducts/en/PIC18F46Q71)
@@ -77,7 +77,7 @@ The following labs in this demo code project are designed for Microchip™s Curi
   ###### Left Shift Binary Operation
   ![Lab3-left-shift-binary-operation](images/Lab3-left-shift-binary-operation.PNG)
 
-  Similarly, use the Binary Right Shift Operator (>>) to push a '`1`' into the Most Significatn Bit (MSb) of the register and have the rest of the bits shift to the right. First set up the Carry bit with the value to be pushed into the register before executing the shift, as seen in the figure below.
+  Similarly, use the Binary Right Shift Operator (>>) to push a '`1`' into the Most Significant Bit (MSb) of the register and have the rest of the bits shift to the right. First set up the Carry bit with the value to be pushed into the register before executing the shift, as seen in the figure below.
 
   ###### Right Shift Binary Operation
   ![Lab3-right-shift-binary-operation](images/Lab3-right-shift-binary-operation.PNG)
@@ -85,14 +85,14 @@ The following labs in this demo code project are designed for Microchip™s Curi
 
   ### <u>Lab 4: Analog-to-Digital Conversion (ADC)</u>
   #### Introduction
-  This lab shows how to configure the ADC, run a conversion, read the analog voltage controlled by the on-board potentiometer, print the conversion result on the Universal Asynchronous Receiver and Transmitter (UART) and display the high order four bits on the display.
+  This lab shows how to configure the ADC, run a conversion, read the analog voltage controlled by the on-board potentiometer, print the conversion result on the Universal Asynchronous Receiver and Transmitter (UART) and display the high-order four bits on the display.
 
   #### Hardware Effects
   The four MSbs of the ADC result are reflected onto each of the four LEDs, respectively. Rotate the potentiometer to change the display. <br />
-  The ADC value will be printed on UART the TX pin which is connected to pin RC6 through Peripheral Pin Select (PPS). Connect RC6 to the Virtual COM port using a jumper wire to use the on-board serial-to-USB feature.
+  The ADC value will be printed on the UART TX pin which is connected to pin RC6 through Peripheral Pin Select (PPS). Connect RC6 to the Virtual COM port using a jumper wire to use the on-board serial-to-USB feature.
 
   #### Summary
-  The PIC18-Q71 family of devices have an on-board Analog-to-Digital Converter with Computation and Context Saving with 12 bits of resolution. The converter can be referenced to the device's V<sub>DD</sub> or an external voltage reference. This lab references it to V<sub>DD</sub>. The result from the ADC is represented by a ratio of the voltage to the reference.
+  The PIC18-Q71 family of devices have an on-board Analog-to-Digital Converter with Computation (ADCC) and Context Saving with 12 bits of resolution. The converter can be referenced to the device's V<sub>DD</sub> or an external voltage reference. This lab references it to V<sub>DD</sub>. The result from the ADC is represented by a ratio of the voltage to the reference.
 
 
   ### <u>Lab 5: Variable Speed Rotate</u>
@@ -100,7 +100,7 @@ The following labs in this demo code project are designed for Microchip™s Curi
   This lab combines all previous ones to produce a variable speed rotating LED display that is proportional to the ADC value. The ADC value and LED rotate speed are inversely proportional to each other.
 
   #### Hardware Effects
-  Rotate the on-board potentiometer to change the speed of the LEDs shift. <br />
+  Rotate the on-board potentiometer to change the speed of the LED's shift. <br />
   The ADC value will be printed on the UART TX pin which is connected to pin RC6 through PPS. Connect RC6 to the Virtual COM port using a jumper wire to use the on-board serial-to-USB feature.
 
   #### Summary
@@ -114,11 +114,11 @@ The following labs in this demo code project are designed for Microchip™s Curi
   In this lab, the PIC MCU generates a PWM signal that lights an LED with the potentiometer, thereby controlling the brightness.
 
   #### Hardware Effects
-  Rotating potentiometer will adjust the brightness of LED D5. <br />
+  Rotating the potentiometer will adjust the brightness of LED D5. <br />
   The ADC value will be printed on the UART TX pin which is connected to pin RC6 through PPS. Connect RC6 to the Virtual COM port using a jumper wire to use the on-board serial-to-USB feature.
 
   #### Summary
-  A PWM is a method for providing power to a load by switching quickly between fully ON and fully OFF states. The PWM signal resembles a square wave where the high portion of the signal is considered the ON state and the low portion of the signal is considered the OFF state. The high portion, also known as the pulse width, can vary in time and is defined in steps. A longer ON time will illuminate the LED brighter. The frequency or period of the PWM does not change. The PWM period is defined as the duration of one cycle or the total amount of ON and OFF time combined. Another important term to take note is the PWM duty cycle, which is the ratio of the pulse width to the period and is often expressed in percentage. A lower duty cycle corresponds to less power applied and a higher duty cycle corresponds to more power applied.
+  A PWM is a method for providing power to a load by switching quickly between fully ON and fully OFF states. The PWM signal resembles a square wave where the high portion of the signal is considered the ON state and the low portion of the signal is considered the OFF state. The high portion, also known as the pulse width, can vary in time and is defined in steps. A longer ON time will illuminate the LED brighter. The frequency or period of the PWM does not change. The PWM period is defined as the duration of one cycle or the total amount of ON and OFF time combined. Another important term to note is the PWM duty cycle, which is the ratio of the pulse width to the period and is often expressed in percentage. A lower duty cycle corresponds to less power applied and a higher duty cycle corresponds to more power applied.
 
 
   ### <u>Lab 7: Timers</u>
@@ -135,13 +135,13 @@ The following labs in this demo code project are designed for Microchip™s Curi
 
   ### <u>Lab 8: Interrupts</u>
   #### Introduction
-  This lab discusses all about interrupts; their purpose, capabilities and how to set them up. Most interrupts are sourced from MCU peripheral modules. Some I/O pins can also be configured to generate interrupts whenever a change in state is detected. Interrupts usually signal events that require servicing by the softwar's Interrupt Service Routine (ISR). Once an interrupt occurs, the program counter immediately jumps to the ISR and once the interrupt flag is cleared, resumes what it was doing before. It is a more efficient way of handling events than continuously polling a status flag.
+  This lab discusses all about interrupts—their purpose, capabilities and how to set them up. Most interrupts are sourced from MCU peripheral modules. Some I/O pins can also be configured to generate interrupts whenever a change in state is detected. Interrupts usually signal events that require servicing by the software's Interrupt Service Routine (ISR). Once an interrupt occurs, the program counter immediately jumps to the ISR to clear the interrupt flag, and then resumes what it was doing before. It is a more efficient way of handling events than continuously polling a status flag.
 
   #### Hardware Effects
   LEDs D5, D4, D3 and D2 rotate from left to right at a constant rate of 499.712 ms.
 
   #### Summary
-  This lab demonstrates the advantage of using interrupts over polling. An interrupt is generated whenever the Timer0 register reaches 0xFF and goes back to reset value. This indicates that 500 ms has passed and it is time to rotate the light. This interrupt is serviced by the TMR0_ISR() function. Note that this is the same for Lab 7: TIMER1 but this time, we are not continuously watching the TMR1IF flag.
+  This lab demonstrates the advantage of using interrupts over polling. An interrupt is generated whenever the Timer0 (TMR0) register reaches 0xFF and goes back to reset value. This indicates that 500 ms has passed and it is time to rotate the light. This interrupt is serviced by the `TMR0_ISR()` function. Note that this is the same for Lab 7: TIMER1, but this time we are not continuously watching the TMR1IF flag.
 
 
   ### <u>Lab 9: Wake-up From Sleep Using Watchdog Timer (WDT)</u>
@@ -158,13 +158,13 @@ The following labs in this demo code project are designed for Microchip™s Curi
   - TO bit of the STATUS register is set
   - CPU clock is disabled
 
-  Different PICs have different conditions once they enter Sleep mode. Refer to the datasheet to find out more information about them. <br />
+  Different PICs have different conditions once they enter Sleep mode. Refer to the data sheet to find out more information about them. <br />
   The WDT is a system timer that generates a Reset if the firmware does not issue a `CLRWDT` instruction within the time-out period. The WDT is typically used to recover the system from unexpected events. When the device enters Sleep, the WDT is cleared. If the WDT is enabled during Sleep, the WDT resumes counting. When the device exits Sleep, the WDT is cleared again. When a WDT time-out occurs while the device is in Sleep, no Reset is generated.
 
 
   ### <u>Lab 10: EEPROM</u>
   #### Introduction
-  This lab provides code for writing and reading a single byte to the on-board EEPROM. EEPROM is nonvolatile memory, meaning that it does not lose its value when power is shut off. This is unlike RAM, which will lose its value when no power is applied. The EEPROM is useful for storing variables that must available between power cycles. A good use case is to store calibration data for the user application and have it loaded on every boot-up. It is also convenient to use if the entire RAM space is used up. Writes and reads to the EEPROM are relatively quick, being much faster than Program Flash Memory (PFM) operations.
+  This lab provides code for writing and reading a single byte to the on-board EEPROM. EEPROM is nonvolatile memory, meaning that it does not lose its value when power is shut off. This is unlike RAM, which will lose its value when no power is applied. The EEPROM is useful for storing variables that must be available between power cycles. A good use case is to store calibration data for the user application and have it loaded on every boot-up. It is also convenient to use if the entire RAM space is used up. Writes and reads to the EEPROM are relatively quick, being much faster than Program Flash Memory (PFM) operations.
 
   #### Hardware Effects
   The ADC is used to continously sample the potentiometer, and the upper MSbs of the result are written to the LEDs. When switch S2 is pressed, the current ADC value is written to the first location in EEPROM and the entire contents of the EEPROM memory is printed via the serial port. When the switch is pressed again, the current ADC value is written to the next address in EEPROM and the EEPROM contents are printed again. This process can be repeated until the EEPROM memory is full, after which the program will start writing ADC values starting at the beginning of EEPROM. 
@@ -177,4 +177,4 @@ The following labs in this demo code project are designed for Microchip™s Curi
 
   ## Summary
  
-  These labs demonstrte some of the basic features of PIC MCUs using the Curiosity HPC development board. The labs also demostrate how MCC can be used to easily configure the hardware features and peripherals on PIC devices and provides some simple examples of how to write C code to control the hardware. 
+  These labs demonstrate some of the basic features of PIC MCUs using the Curiosity HPC development board. The labs also present how MCC can be used to easily configure the hardware features and peripherals on PIC devices, providing some simple examples of how to write C code to control the hardware. 
