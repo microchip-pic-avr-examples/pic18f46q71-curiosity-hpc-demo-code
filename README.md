@@ -8,7 +8,8 @@
 The following labs in this demo code project are designed for Microchip™s Curiosity High Pin Count (HPC) Development board. This development board supports Microchip's 28 and 40-pin 8-bit PIC® microcontrollers (MCUs). This MPLAB X project contains several lab exercises that demonstrate a large number of basic capabilities of PIC devices and can also be used to test the condition of the board. Each lab contains a brief description to help you become acquainted with the different peripherals and features of PIC MCUs. These labs also make use of the MPLAB Code Configurator (MCC), an easy-to-use plugin tool for MPLAB X IDE. MCC can be used to set up the on-chip peripherals and generate drivers which can be used in the application code. All labs are written in the C language, and are compatible with the latest XC8 compilers.
 
 ##### Curiosity High Pin Count (HPC) Development Board:
-![Curiosity High Pin Count (HPC) Development Board](images/HPC-board.PNG)
+
+![Curiosity High Pin Count (HPC) Development Board](images/HPC-board.png)
 
 ## Software Used
   - [MPLAB® X IDE 6.20 or newer](http://www.microchip.com/mplab/mplab-x-ide)
@@ -75,12 +76,14 @@ The following labs in this demo code project are designed for Microchip™s Curi
   For example, for a certain register rotateReg, use the Binary Left Shift Operator (<<) to push a '`1`' into the Least Significant Bit (LSb) of the register and have the rest of the bits shift to the left. First set up the Carry bit with the value to be pushed into the register before executing the shift, as seen in the figure below. 
 
   ###### Left Shift Binary Operation
-  ![Lab3-left-shift-binary-operation](images/Lab3-left-shift-binary-operation.PNG)
+
+  ![Lab3-left-shift-binary-operation](images/Lab3-left-shift-binary-operation.png)
 
   Similarly, use the Binary Right Shift Operator (>>) to push a '`1`' into the Most Significant Bit (MSb) of the register and have the rest of the bits shift to the right. First set up the Carry bit with the value to be pushed into the register before executing the shift, as seen in the figure below.
 
   ###### Right Shift Binary Operation
-  ![Lab3-right-shift-binary-operation](images/Lab3-right-shift-binary-operation.PNG)
+
+  ![Lab3-right-shift-binary-operation](images/Lab3-right-shift-binary-operation.png)
 
 
   ### <u>Lab 4: Analog-to-Digital Conversion (ADC)</u>
@@ -107,7 +110,8 @@ The following labs in this demo code project are designed for Microchip™s Curi
   A crucial step in this lab is to check if the ADC value is zero. If it does not perform the zero check, and the ADC result is zero, the LEDs will rotate at an incorrect speed. This is an effect of the delay value underflowing from 0 to 255.
 
   ###### Program Flow
-  ![Lab 5 Program Flow](images/Lab5-program-flow.PNG)
+
+  ![Lab 5 Program Flow](images/Lab5-program-flow.png)
 
   ### <u>Lab 6: Pulse-Width Modulation (PWM)</u>
   #### Introduction
@@ -173,7 +177,8 @@ The following labs in this demo code project are designed for Microchip™s Curi
   This lab stores an ADC value every time switch 2 is pressed, effectively keeping a log of all ADC values. 
   
   ###### Program Flow
-  ![Lab 5 Program Flow](images/Lab10-program-flow.PNG)
+
+  ![Lab 5 Program Flow](images/Lab10-program-flow.png)
 
   ## Summary
  
