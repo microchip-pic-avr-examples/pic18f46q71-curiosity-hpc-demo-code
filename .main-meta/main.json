@@ -44,7 +44,7 @@
             "TMR1",
             "TMR2",
             "ADC",
-            "NVM",
+            "NVMCTRL",
             "UART",
             "CLC"
         ],
